@@ -184,17 +184,33 @@ if ((millis() - stime) / 1000 >= 1){
     timerA--;
     if (timerA <= 10){
       if (timerA == 0){ 
-        tone(13,440,500);
+        tone(speakerpin,880,500);
       }
       else if (timerA <=3){ 
-        tone(13,440, 200);
+        tone(speakerpin,440, 200);
       }
       else{
-        tone(13,330, 200);
+        tone(speakerpin,330, 200);
+      }
+    }
+    else if((timerA % 30) == 0){
+      int beeps = timerA / 30;
+      for (int i = 0; i < beeps; i++){
+        tone(speakerpin,300, 80);
+        delay(160);
       }
     }
   }
-  if (timerRunsB == true) timerB--;
+  if (timerRunsB == true){ 
+    timerB--;
+    if (timerB == ((timerStartB * 2) / 3)) tone(speakerpin, 220, 500);
+    else if (timerB == 0){
+      for (int i = 1; i <=4; i++){
+        tone(speakerpin, i * 180, 120);
+        delay(120);
+      }
+    }
+  }
 }
 
 if (timerA <= 0) timerReset('a');
