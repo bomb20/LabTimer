@@ -206,8 +206,8 @@ if ((millis() - stime) / 1000 >= 1){
     if (timerB == ((timerStartB * 2) / 3)) tone(speakerpin, 220, 500);
     else if (timerB == 0){
       for (int i = 1; i <=4; i++){
-        tone(speakerpin, i * 180, 120);
-        delay(120);
+        tone(speakerpin, i * 180, 40);
+        delay(40);
       }
     }
   }
@@ -219,6 +219,6 @@ if (timerB <= 0) timerReset('b');
 updateTimerDisplay();
   
  
-  delay(10);
+ // delay(10);
 }
 
